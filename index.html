@@ -23,12 +23,13 @@
             --page-shadow: #c4b896;
             --spine-dark: #2a1508;
             --red-accent: #8b1a1a;
-            --book-width: 420px;
-            --book-height: 560px;
-            --book-width-mobile: 300px;
-            --book-height-mobile: 400px;
-            --book-width-tablet: 360px;
-            --book-height-tablet: 480px;
+            /* Book dimensions – wider and a little shorter */
+            --book-width: 500px;
+            --book-height: 480px;
+            --book-width-mobile: 360px;
+            --book-height-mobile: 340px;
+            --book-width-tablet: 420px;
+            --book-height-tablet: 420px;
         }
 
         * {
@@ -524,14 +525,20 @@
         }
         .flipping-page .page-content {
             font-family: 'Cormorant Garamond', 'Georgia', serif;
-            font-size: clamp(14px, 1.8vw, 18px);
+            font-size: clamp(16px, 2vw, 20px);
             color: #3a2a15;
             text-align: center;
             padding: 15px;
             font-style: italic;
-            line-height: 1.4;
+            font-weight: 600;
+            line-height: 1.5;
             opacity: 0;
             transition: opacity 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
         }
         .flipping-page.show-answer .page-content {
             opacity: 1;
@@ -2441,4 +2448,4 @@
         })();
     </script>
 </body>
-</html>
+    </html>
