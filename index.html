@@ -1,0 +1,2444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book of ANSWERS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #1a1a1f;
+            --surface: #23232a;
+            --text: #e0d8cc;
+            --text-light: #c4b9a6;
+            --gold: #c9a84c;
+            --gold-bright: #e0c46d;
+            --gold-dim: #a08030;
+            --leather-dark: #3b2210;
+            --leather: #5c3a1e;
+            --leather-light: #7a4f2e;
+            --leather-highlight: #8b5e3c;
+            --page: #f4ecdc;
+            --page-edge: #d9ceb5;
+            --page-shadow: #c4b896;
+            --spine-dark: #2a1508;
+            --red-accent: #8b1a1a;
+            --book-width: 420px;
+            --book-height: 560px;
+            --book-width-mobile: 300px;
+            --book-height-mobile: 400px;
+            --book-width-tablet: 360px;
+            --book-height-tablet: 480px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            background-image:
+                radial-gradient(ellipse at center, #1f1f28 0%, #121218 100%),
+                radial-gradient(circle at 50% 30%, rgba(201, 168, 76, 0.04) 0%, transparent 60%),
+                radial-gradient(circle at 30% 70%, rgba(139, 26, 26, 0.03) 0%, transparent 50%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 16px;
+            font-family: 'Playfair Display', 'Georgia', 'Times New Roman', serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Subtle floating particles */
+        .particles-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--gold);
+            opacity: 0;
+            animation: floatUp 8s infinite ease-in;
+        }
+        .particle:nth-child(1) {
+            left: 10%;
+            animation-delay: 0s;
+            animation-duration: 9s;
+        }
+        .particle:nth-child(2) {
+            left: 25%;
+            animation-delay: 2s;
+            animation-duration: 7.5s;
+        }
+        .particle:nth-child(3) {
+            left: 40%;
+            animation-delay: 4s;
+            animation-duration: 8.5s;
+        }
+        .particle:nth-child(4) {
+            left: 55%;
+            animation-delay: 1s;
+            animation-duration: 10s;
+        }
+        .particle:nth-child(5) {
+            left: 70%;
+            animation-delay: 3s;
+            animation-duration: 7s;
+        }
+        .particle:nth-child(6) {
+            left: 85%;
+            animation-delay: 5s;
+            animation-duration: 9.5s;
+        }
+        .particle:nth-child(7) {
+            left: 15%;
+            animation-delay: 6s;
+            animation-duration: 8s;
+        }
+        .particle:nth-child(8) {
+            left: 50%;
+            animation-delay: 3.5s;
+            animation-duration: 11s;
+        }
+        .particle:nth-child(9) {
+            left: 75%;
+            animation-delay: 1.5s;
+            animation-duration: 7.8s;
+        }
+        .particle:nth-child(10) {
+            left: 92%;
+            animation-delay: 4.5s;
+            animation-duration: 9.2s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                opacity: 0;
+                transform: translateY(105vh) scale(0.3);
+            }
+            5% {
+                opacity: 0.7;
+            }
+            30% {
+                opacity: 0.5;
+            }
+            60% {
+                opacity: 0.2;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-10vh) scale(1.8);
+            }
+        }
+
+        /* Main container */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            gap: 20px;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-top: 10px;
+            position: relative;
+        }
+        .header h1 {
+            font-family: 'Cinzel Decorative', 'Georgia', serif;
+            font-weight: 900;
+            font-size: clamp(28px, 5.5vw, 50px);
+            letter-spacing: 3px;
+            background: linear-gradient(180deg,
+                    #f0d878 0%, #c9a84c 25%, #e8c860 40%, #a07828 55%, #d4b850 65%, #f0d878 80%, #8b6518 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            text-shadow: none;
+            filter: drop-shadow(0 2px 6px rgba(201, 168, 76, 0.5));
+            margin: 0;
+            line-height: 1.2;
+            position: relative;
+            display: inline-block;
+        }
+        .header .subtitle {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-style: italic;
+            font-size: clamp(12px, 2vw, 17px);
+            color: var(--gold-dim);
+            letter-spacing: 2px;
+            margin-top: 2px;
+            opacity: 0.8;
+        }
+        .header::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+            margin: 8px auto 0;
+        }
+
+        /* Book area */
+        .book-area {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 10px 0;
+        }
+
+        /* 3D Scene */
+        .book-scene {
+            perspective: 1400px;
+            perspective-origin: 50% 50%;
+            width: var(--book-width);
+            height: var(--book-height);
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        /* Book */
+        .book {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: rotateY(-15deg) rotateX(5deg);
+            transition: transform 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        .book.open {
+            transform: rotateY(-5deg) rotateX(2deg);
+        }
+
+        /* Book spine */
+        .book-spine {
+            position: absolute;
+            left: 48%;
+            top: 0;
+            width: 4%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                    var(--spine-dark) 0%, #3d1f0a 30%, #5a3015 50%, #3d1f0a 70%, var(--spine-dark) 100%);
+            z-index: 30;
+            border-radius: 3px;
+            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.6), 2px 0 8px rgba(0, 0, 0, 0.4);
+            transform: translateZ(1px);
+        }
+        .book-spine::after {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: 20%;
+            width: 60%;
+            height: 90%;
+            background: linear-gradient(180deg,
+                    transparent 0%, rgba(201, 168, 76, 0.15) 30%, rgba(201, 168, 76, 0.1) 50%, rgba(201, 168, 76, 0.15) 70%, transparent 100%);
+            border-radius: 2px;
+        }
+
+        /* Back cover */
+        .back-cover {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(160deg, var(--leather-dark) 0%, var(--leather) 20%, var(--leather-light) 45%, var(--leather) 70%, var(--leather-dark) 100%);
+            z-index: 1;
+            border-radius: 0 6px 6px 0;
+            box-shadow: 3px 4px 18px rgba(0, 0, 0, 0.7);
+            transform-origin: left center;
+            transform: rotateY(0deg);
+            border-left: 1px solid #2a1508;
+            overflow: hidden;
+        }
+        .back-cover::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 2px solid rgba(160, 120, 50, 0.25);
+            border-radius: 3px;
+            pointer-events: none;
+        }
+        .back-cover::after {
+            content: '';
+            position: absolute;
+            inset: 14px;
+            border: 1px solid rgba(160, 120, 50, 0.12);
+            border-radius: 2px;
+            pointer-events: none;
+        }
+
+        /* Front cover */
+        .front-cover {
+            position: absolute;
+            left: 0%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(155deg,
+                    var(--leather-dark) 0%, #4a2810 15%, var(--leather) 30%, #6b4226 48%, var(--leather-light) 55%, #6b4226 62%, var(--leather) 78%, #4a2810 92%, var(--leather-dark) 100%);
+            z-index: 40;
+            border-radius: 6px 0 0 6px;
+            box-shadow: -3px 4px 18px rgba(0, 0, 0, 0.7), inset 0 0 0 1px rgba(90, 50, 25, 0.3);
+            transform-origin: right center;
+            transform: rotateY(0deg);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
+            border-right: 2px solid #2a1508;
+            overflow: hidden;
+        }
+        .front-cover.open {
+            transform: rotateY(-175deg);
+            box-shadow: 8px 4px 25px rgba(0, 0, 0, 0.8), inset 0 0 0 1px rgba(90, 50, 25, 0.3);
+        }
+        .front-cover::before {
+            content: '';
+            position: absolute;
+            inset: 10px;
+            border: 3px solid rgba(180, 140, 60, 0.3);
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .front-cover::after {
+            content: '';
+            position: absolute;
+            inset: 18px;
+            border: 1.5px solid rgba(180, 140, 60, 0.15);
+            border-radius: 3px;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .cover-ornament {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 65%;
+            height: 55%;
+            border: 2px solid rgba(200, 155, 60, 0.35);
+            border-radius: 4px;
+            z-index: 3;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cover-ornament::before {
+            content: '◆';
+            font-size: 28px;
+            color: rgba(200, 155, 60, 0.5);
+            position: absolute;
+            top: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--leather);
+            padding: 0 8px;
+        }
+        .cover-ornament::after {
+            content: '◆';
+            font-size: 28px;
+            color: rgba(200, 155, 60, 0.5);
+            position: absolute;
+            bottom: -16px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--leather);
+            padding: 0 8px;
+        }
+        .cover-title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Cinzel Decorative', 'Georgia', serif;
+            font-weight: 700;
+            font-size: clamp(11px, 1.5vw, 16px);
+            color: rgba(210, 170, 70, 0.7);
+            text-align: center;
+            letter-spacing: 2px;
+            z-index: 4;
+            pointer-events: none;
+            line-height: 1.4;
+        }
+
+        /* Page stack on right */
+        .page-stack {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .page-stack .page-layer {
+            position: absolute;
+            top: 2px;
+            left: 0;
+            width: 100%;
+            height: calc(100% - 4px);
+            background: var(--page);
+            border-radius: 0 3px 3px 0;
+            transform-origin: left center;
+            transform: rotateY(0deg);
+            border-left: 1px solid #c4b896;
+            box-shadow: 1px 0 3px rgba(0, 0, 0, 0.2);
+        }
+        .page-stack .page-layer:nth-child(1) {
+            z-index: 20;
+            left: -1px;
+        }
+        .page-stack .page-layer:nth-child(2) {
+            z-index: 19;
+            left: -2px;
+            background: #f2ead8;
+        }
+        .page-stack .page-layer:nth-child(3) {
+            z-index: 18;
+            left: -3px;
+            background: #f0e8d4;
+        }
+        .page-stack .page-layer:nth-child(4) {
+            z-index: 17;
+            left: -4px;
+            background: #eee6d0;
+        }
+        .page-stack .page-layer:nth-child(5) {
+            z-index: 16;
+            left: -5px;
+            background: #ece4cc;
+        }
+        .page-stack .page-layer:nth-child(6) {
+            z-index: 15;
+            left: -6px;
+            background: #eae2c8;
+        }
+        .page-stack .page-layer:nth-child(7) {
+            z-index: 14;
+            left: -7px;
+            background: #e8e0c4;
+        }
+        .page-stack .page-layer:nth-child(8) {
+            z-index: 13;
+            left: -8px;
+            background: #e6dec0;
+        }
+
+        /* Left side page stack (revealed after flips) */
+        .page-stack-left {
+            position: absolute;
+            left: 0%;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            z-index: 4;
+            pointer-events: none;
+            border-radius: 3px 0 0 3px;
+            overflow: hidden;
+        }
+        .page-stack-left .page-layer-left {
+            position: absolute;
+            top: 2px;
+            right: 0;
+            width: 100%;
+            height: calc(100% - 4px);
+            background: var(--page);
+            border-radius: 3px 0 0 3px;
+            border-right: 1px solid #c4b896;
+            box-shadow: -1px 0 3px rgba(0, 0, 0, 0.15);
+        }
+        .page-stack-left .page-layer-left:nth-child(1) {
+            z-index: 10;
+            right: -1px;
+        }
+        .page-stack-left .page-layer-left:nth-child(2) {
+            z-index: 9;
+            right: -2px;
+            background: #f2ead8;
+        }
+        .page-stack-left .page-layer-left:nth-child(3) {
+            z-index: 8;
+            right: -3px;
+            background: #f0e8d4;
+        }
+        .page-stack-left .page-layer-left:nth-child(4) {
+            z-index: 7;
+            right: -4px;
+            background: #eee6d0;
+        }
+
+        /* Flipping page element */
+        .flipping-page {
+            position: absolute;
+            left: 50%;
+            top: 2px;
+            width: 50%;
+            height: calc(100% - 4px);
+            background: var(--page);
+            z-index: 25;
+            transform-origin: left center;
+            transform: rotateY(0deg);
+            transition: transform 0.15s ease-in;
+            border-radius: 0 3px 3px 0;
+            border-left: 1px solid #c4b896;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.3);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .flipping-page.flipped {
+            transform: rotateY(-175deg);
+            transition: transform 0.12s ease-out;
+        }
+        .flipping-page.slow-flip {
+            transition: transform 0.35s ease-out;
+        }
+        .flipping-page.very-slow-flip {
+            transition: transform 0.6s cubic-bezier(0.2, 0, 0.3, 1);
+        }
+        .flipping-page .page-content {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: clamp(14px, 1.8vw, 18px);
+            color: #3a2a15;
+            text-align: center;
+            padding: 15px;
+            font-style: italic;
+            line-height: 1.4;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .flipping-page.show-answer .page-content {
+            opacity: 1;
+        }
+        .flipping-page .page-number {
+            position: absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size: 10px;
+            color: #b8a888;
+            font-style: normal;
+        }
+
+        /* Answer display area (on the open spread) */
+        .answer-display {
+            position: absolute;
+            left: 5%;
+            top: 50%;
+            width: 42%;
+            transform: translateY(-50%);
+            z-index: 3;
+            pointer-events: none;
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: clamp(13px, 1.6vw, 17px);
+            color: #3a2a15;
+            text-align: center;
+            font-style: italic;
+            line-height: 1.5;
+            opacity: 0;
+            transition: opacity 0.5s ease 0.3s;
+            padding: 10px;
+        }
+        .answer-display.visible {
+            opacity: 1;
+        }
+
+        /* Input area */
+        .input-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            max-width: 440px;
+            z-index: 10;
+            position: relative;
+        }
+        .question-label {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-style: italic;
+            color: var(--text-light);
+            font-size: clamp(14px, 2.2vw, 17px);
+            letter-spacing: 1px;
+            text-align: center;
+        }
+        .question-input {
+            width: 100%;
+            padding: 14px 20px;
+            border-radius: 30px;
+            border: 2px solid rgba(201, 168, 76, 0.3);
+            background: rgba(30, 30, 38, 0.8);
+            color: var(--text);
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: clamp(15px, 2.5vw, 17px);
+            text-align: center;
+            letter-spacing: 0.5px;
+            transition: all 0.35s ease;
+            outline: none;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .question-input::placeholder {
+            color: rgba(180, 160, 130, 0.5);
+            font-style: italic;
+        }
+        .question-input:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 25px rgba(201, 168, 76, 0.2), 0 0 60px rgba(201, 168, 76, 0.08);
+            background: rgba(35, 35, 44, 0.9);
+        }
+        .btn-answer {
+            padding: 14px 44px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(135deg, #5c3a1e 0%, #7a4f2e 40%, #8b5e3c 60%, #6b4226 100%);
+            color: #e0c46d;
+            font-family: 'Cinzel Decorative', 'Georgia', serif;
+            font-weight: 700;
+            font-size: clamp(14px, 2.2vw, 16px);
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 30px rgba(201, 168, 76, 0.1);
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            -webkit-tap-highlight-color: transparent;
+        }
+        .btn-answer:hover {
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), 0 0 45px rgba(201, 168, 76, 0.25);
+            transform: translateY(-2px);
+            color: #f0d878;
+        }
+        .btn-answer:active {
+            transform: scale(0.96);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+            transition: all 0.1s ease;
+        }
+        .btn-answer:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            pointer-events: none;
+            filter: grayscale(30%);
+        }
+        .btn-answer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .btn-answer:hover::after {
+            opacity: 1;
+        }
+
+        /* Answer text below book */
+        .answer-reveal {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-style: italic;
+            font-size: clamp(16px, 3vw, 22px);
+            color: var(--gold-bright);
+            text-align: center;
+            min-height: 40px;
+            letter-spacing: 1px;
+            transition: all 0.5s ease;
+            opacity: 0;
+            transform: translateY(10px);
+            padding: 0 10px;
+        }
+        .answer-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Toast for empty question */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(180, 50, 50, 0.9);
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Playfair Display', 'Georgia', serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            z-index: 100;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 520px) {
+            .book-scene {
+                width: var(--book-width-mobile);
+                height: var(--book-height-mobile);
+            }
+            .cover-ornament {
+                width: 55%;
+                height: 45%;
+            }
+            .cover-ornament::before,
+            .cover-ornament::after {
+                font-size: 18px;
+                top: -10px;
+            }
+            .cover-ornament::after {
+                bottom: -10px;
+            }
+            .cover-title {
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+            .front-cover::before {
+                inset: 6px;
+                border-width: 2px;
+            }
+            .front-cover::after {
+                inset: 12px;
+            }
+            .back-cover::before {
+                inset: 6px;
+            }
+            .back-cover::after {
+                inset: 12px;
+            }
+            .btn-answer {
+                padding: 12px 32px;
+                font-size: 13px;
+            }
+            .question-input {
+                padding: 12px 16px;
+            }
+        }
+        @media (max-width: 380px) {
+            .book-scene {
+                width: 260px;
+                height: 350px;
+            }
+            .cover-ornament {
+                width: 50%;
+                height: 40%;
+            }
+            .cover-ornament::before,
+            .cover-ornament::after {
+                font-size: 14px;
+                top: -8px;
+            }
+            .cover-ornament::after {
+                bottom: -8px;
+            }
+            .cover-title {
+                font-size: 9px;
+                letter-spacing: 1px;
+            }
+            .front-cover::before {
+                inset: 5px;
+                border-width: 1.5px;
+            }
+            .front-cover::after {
+                inset: 9px;
+            }
+            .flipping-page .page-content {
+                font-size: 11px;
+                padding: 8px;
+            }
+            .answer-display {
+                font-size: 10px;
+            }
+        }
+        @media (min-width: 768px) {
+            .book-scene {
+                width: var(--book-width-tablet);
+                height: var(--book-height-tablet);
+            }
+        }
+        @media (min-width: 1024px) {
+            .book-scene {
+                width: var(--book-width);
+                height: var(--book-height);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Floating particles -->
+    <div class="particles-container">
+        <div class="particle" style="width:3px;height:3px;"></div>
+        <div class="particle" style="width:2px;height:2px;"></div>
+        <div class="particle" style="width:4px;height:4px;"></div>
+        <div class="particle" style="width:2px;height:2px;"></div>
+        <div class="particle" style="width:3px;height:3px;"></div>
+        <div class="particle" style="width:2px;height:2px;"></div>
+        <div class="particle" style="width:3px;height:3px;"></div>
+        <div class="particle" style="width:4px;height:4px;"></div>
+        <div class="particle" style="width:2px;height:2px;"></div>
+        <div class="particle" style="width:3px;height:3px;"></div>
+    </div>
+
+    <!-- Main container -->
+    <div class="main-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>Book Of ANSWERS</h1>
+            <p class="subtitle">Ask, and the pages shall reveal...</p>
+        </div>
+
+        <!-- Book Area -->
+        <div class="book-area">
+            <div class="book-scene" id="bookScene">
+                <div class="book" id="book">
+                    <!-- Back cover -->
+                    <div class="back-cover"></div>
+
+                    <!-- Left page stack -->
+                    <div class="page-stack-left" id="pageStackLeft">
+                        <div class="page-layer-left"></div>
+                        <div class="page-layer-left"></div>
+                        <div class="page-layer-left"></div>
+                        <div class="page-layer-left"></div>
+                    </div>
+
+                    <!-- Right page stack -->
+                    <div class="page-stack" id="pageStack">
+                        <div class="page-layer"></div>
+                        <div class="page-layer"></div>
+                        <div class="page-layer"></div>
+                        <div class="page-layer"></div>
+                        <div class="page-layer"></div>
+                        <div class="page-layer"></div>
+                        <div class="page-layer"></div>
+                        <div class="page-layer"></div>
+                    </div>
+
+                    <!-- Spine -->
+                    <div class="book-spine"></div>
+
+                    <!-- Front cover -->
+                    <div class="front-cover" id="frontCover">
+                        <div class="cover-ornament">
+                            <span class="cover-title">BOOK OF<br>ANSWERS</span>
+                        </div>
+                    </div>
+
+                    <!-- Flipping page (animated) -->
+                    <div class="flipping-page" id="flippingPage">
+                        <span class="page-content" id="pageContent"></span>
+                        <span class="page-number" id="pageNumber"></span>
+                    </div>
+
+                    <!-- Answer on left spread -->
+                    <div class="answer-display" id="answerDisplay"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+            <label class="question-label" for="questionInput">✦ &nbsp;What is your question?&nbsp; ✦</label>
+            <input
+            type="text"
+            class="question-input"
+            id="questionInput"
+            placeholder="Type your question here..."
+            maxlength="200"
+            autocomplete="off"
+            >
+            <button class="btn-answer" id="btnAnswer" title="Open the book for your answer">
+                ✧ Reveal Answer ✧
+            </button>
+        </div>
+
+        <!-- Answer reveal text -->
+        <div class="answer-reveal" id="answerReveal"></div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">Please ask a question first</div>
+
+    <script>
+        (function() {
+            // ─────────────────────────────────────
+            // 700 ANSWERS — Inspired by Carol Bolt's Book of Answers
+            // ─────────────────────────────────────
+            const answers = [
+                "Yes",
+                "No",
+                "Maybe",
+                "Definitely",
+                "Absolutely not",
+                "Perhaps",
+                "It is certain",
+                "It is decidedly so",
+                "Without a doubt",
+                "Yes, definitely",
+                "You may rely on it",
+                "As I see it, yes",
+                "Most likely",
+                "Outlook good",
+                "Signs point to yes",
+                "Reply hazy, try again",
+                "Ask again later",
+                "Better not tell you now",
+                "Cannot predict now",
+                "Concentrate and ask again",
+                "Don't count on it",
+                "My reply is no",
+                "My sources say no",
+                "Outlook not so good",
+                "Very doubtful",
+                "Never",
+                "Always",
+                "Soon",
+                "Not now",
+                "Later",
+                "In due time",
+                "Wait",
+                "Be patient",
+                "Act now",
+                "Go for it",
+                "Take the risk",
+                "Play it safe",
+                "Trust yourself",
+                "Believe in it",
+                "Have faith",
+                "Stay strong",
+                "Let it go",
+                "Hold on",
+                "Move forward",
+                "Step back",
+                "Reconsider",
+                "Think twice",
+                "Be careful",
+                "Proceed with caution",
+                "Not advisable",
+                "It's a trap",
+                "The time is right",
+                "Timing is everything",
+                "The stars align for you",
+                "Fate will decide",
+                "Destiny says yes",
+                "The universe agrees",
+                "Look within yourself",
+                "The answer lies inside you",
+                "Trust your intuition",
+                "Your heart knows the truth",
+                "Follow your instincts",
+                "The signs are clear",
+                "Listen to your inner voice",
+                "What does your gut say?",
+                "You already know the answer",
+                "Deep down, you know",
+                "The truth will reveal itself",
+                "Patience brings clarity",
+                "Clarity comes with time",
+                "Seek and you shall find",
+                "The path will unfold",
+                "Everything happens for a reason",
+                "This is meant to be",
+                "Not everything is as it seems",
+                "Look beyond the surface",
+                "There is more to discover",
+                "Keep digging",
+                "The mystery remains",
+                "Some things are best unknown",
+                "Embrace the unknown",
+                "Let fate surprise you",
+                "Expect the unexpected",
+                "Prepare for a twist",
+                "Change is coming",
+                "A shift is on the horizon",
+                "Something new approaches",
+                "Be ready for anything",
+                "Stay open to possibilities",
+                "Opportunity knocks soon",
+                "A door will open",
+                "A window of chance appears",
+                "Seize the moment",
+                "Don't hesitate",
+                "Hesitation breeds failure",
+                "Fortune favors the bold",
+                "Courage will guide you",
+                "Bravery is rewarded",
+                "Take the leap",
+                "Jump in with both feet",
+                "Dive deep",
+                "Surface level won't suffice",
+                "Go deeper",
+                "Explore further",
+                "Expand your horizons",
+                "Broaden your perspective",
+                "See the bigger picture",
+                "Zoom out",
+                "Details matter",
+                "Pay attention",
+                "Notice the small things",
+                "The devil is in the details",
+                "Small steps lead to big journeys",
+                "One step at a time",
+                "Progress, not perfection",
+                "Keep moving",
+                "Don't stop now",
+                "You're on the right track",
+                "Stay the course",
+                "Persist",
+                "Persistence pays off",
+                "Never give up",
+                "Keep pushing forward",
+                "Your efforts will be rewarded",
+                "Hard work brings results",
+                "Success is within reach",
+                "Victory is yours",
+                "Triumph awaits",
+                "Celebrate your wins",
+                "You deserve it",
+                "Reward yourself",
+                "Be proud",
+                "Hold your head high",
+                "Confidence is key",
+                "Self-belief conquers all",
+                "You are capable",
+                "You have the power",
+                "Strength resides in you",
+                "Tap into your potential",
+                "Unlock your hidden talents",
+                "Discover new abilities",
+                "You are more than you know",
+                "Underestimate not thyself",
+                "You are enough",
+                "Perfection is an illusion",
+                "Embrace imperfection",
+                "Flaws make you human",
+                "Be kind to yourself",
+                "Self-compassion heals",
+                "Forgive yourself",
+                "Let go of guilt",
+                "Release the past",
+                "The past is behind you",
+                "Focus on the present",
+                "Live in the now",
+                "Today is a gift",
+                "Make the most of it",
+                "Cherish each moment",
+                "Time is precious",
+                "Don't waste a second",
+                "Value your time",
+                "Prioritize wisely",
+                "What matters most?",
+                "Focus on priorities",
+                "Simplify your life",
+                "Declutter your mind",
+                "Clear thoughts bring clarity",
+                "A calm mind sees clearly",
+                "Meditate on it",
+                "Reflect deeply",
+                "Contemplate the question",
+                "Sleep on it",
+                "Rest brings answers",
+                "Dreams hold clues",
+                "Your dreams speak truth",
+                "Listen to your dreams",
+                "The subconscious knows",
+                "Your mind already decided",
+                "Trust the process",
+                "Allow things to unfold",
+                "Don't force it",
+                "Let it flow naturally",
+                "Nature takes its course",
+                "Go with the flow",
+                "Resistance causes suffering",
+                "Accept what is",
+                "Acceptance brings peace",
+                "Peace is within reach",
+                "Find your center",
+                "Ground yourself",
+                "Stay rooted",
+                "Stand firm",
+                "Don't be swayed",
+                "Hold your ground",
+                "Defend your position",
+                "Speak your truth",
+                "Voice your opinion",
+                "Be heard",
+                "Speak up",
+                "Silence is also an answer",
+                "Sometimes silence is golden",
+                "Words can wait",
+                "Actions speak louder",
+                "Show, don't tell",
+                "Demonstrate your intent",
+                "Lead by example",
+                "Be the change",
+                "Inspire others",
+                "Share your light",
+                "Let your light shine",
+                "Radiate positivity",
+                "Positive energy attracts",
+                "Good vibes only",
+                "Protect your energy",
+                "Guard your spirit",
+                "Set boundaries",
+                "Say no when needed",
+                "No is a complete sentence",
+                "It's okay to decline",
+                "Put yourself first sometimes",
+                "Self-care is essential",
+                "Nurture your soul",
+                "Feed your spirit",
+                "Do what makes you happy",
+                "Happiness is a choice",
+                "Choose joy",
+                "Find joy in the journey",
+                "The journey is the reward",
+                "Enjoy the ride",
+                "Savor the experience",
+                "Taste every moment",
+                "Life is rich",
+                "Abundance surrounds you",
+                "Count your blessings",
+                "Gratitude opens doors",
+                "Be thankful",
+                "Appreciate what you have",
+                "More is coming",
+                "Blessings multiply",
+                "Generosity returns tenfold",
+                "Give and you shall receive",
+                "Share your abundance",
+                "Help others rise",
+                "Lift someone up",
+                "Kindness is never wasted",
+                "A kind act ripples outward",
+                "Spread love",
+                "Love is the answer",
+                "Love conquers all",
+                "Choose love over fear",
+                "Fear is a liar",
+                "Don't let fear win",
+                "Face your fears",
+                "Courage overcomes fear",
+                "Bravery is contagious",
+                "Be the brave one",
+                "Someone believes in you",
+                "You are not alone",
+                "Support is near",
+                "Reach out for help",
+                "Asking for help is strength",
+                "Connection heals",
+                "Build bridges",
+                "Mend relationships",
+                "Heal old wounds",
+                "Forgiveness sets you free",
+                "Letting go liberates",
+                "Freedom awaits",
+                "Break the chains",
+                "Shatter limitations",
+                "No limits exist",
+                "You set your own limits",
+                "Expand your boundaries",
+                "Push past comfort",
+                "Growth lies outside comfort",
+                "Discomfort brings growth",
+                "Embrace the struggle",
+                "Struggle builds character",
+                "Challenges make you stronger",
+                "Adversity is a teacher",
+                "Learn from hardship",
+                "Wisdom comes from pain",
+                "Pain is temporary",
+                "This too shall pass",
+                "Brighter days are ahead",
+                "The sun will rise again",
+                "After rain comes sunshine",
+                "Storms don't last forever",
+                "Calm waters await",
+                "Smooth sailing ahead",
+                "The worst is over",
+                "Recovery begins now",
+                "Healing has started",
+                "Renewal is coming",
+                "A fresh start beckons",
+                "New beginnings are near",
+                "A new chapter opens",
+                "Turn the page",
+                "Write your own story",
+                "You are the author",
+                "Create your reality",
+                "Manifest your desires",
+                "Visualize success",
+                "See it, believe it, achieve it",
+                "Your vision becomes reality",
+                "Dream big",
+                "Aim high",
+                "Shoot for the stars",
+                "The sky is not the limit",
+                "Beyond the stars",
+                "Infinite possibilities",
+                "Everything is possible",
+                "Nothing is impossible",
+                "Miracles happen",
+                "Believe in miracles",
+                "Magic is real",
+                "Wonder exists",
+                "Stay curious",
+                "Curiosity leads to discovery",
+                "Ask more questions",
+                "Never stop questioning",
+                "The quest continues",
+                "Keep seeking",
+                "The search is eternal",
+                "Answers lead to more questions",
+                "The cycle continues",
+                "Round and round we go",
+                "Life is a spiral",
+                "Patterns repeat",
+                "History echoes",
+                "Learn from the past",
+                "Don't repeat mistakes",
+                "Evolve",
+                "Transform yourself",
+                "Metamorphosis awaits",
+                "Become who you are meant to be",
+                "Your true self emerges",
+                "Authenticity wins",
+                "Be real",
+                "Genuine connections matter",
+                "True friends appear",
+                "Loyalty is rewarded",
+                "Trust is earned",
+                "Build trust slowly",
+                "Trust takes time",
+                "Patience in relationships",
+                "Love grows gradually",
+                "Deep bonds form slowly",
+                "Nurture connections",
+                "Water your relationships",
+                "Tend to your garden",
+                "What you plant grows",
+                "Sow good seeds",
+                "Reap what you sow",
+                "Karma is real",
+                "What goes around comes around",
+                "Justice will prevail",
+                "Fairness wins eventually",
+                "The truth comes out",
+                "Lies crumble",
+                "Honesty is best",
+                "Speak with integrity",
+                "Keep your word",
+                "Honor your commitments",
+                "Be reliable",
+                "Dependability matters",
+                "Show up",
+                "Just be there",
+                "Presence is powerful",
+                "Your presence matters",
+                "You make a difference",
+                "Your impact is real",
+                "You matter",
+                "You are significant",
+                "Your life has meaning",
+                "Purpose awaits discovery",
+                "Find your why",
+                "Your purpose is calling",
+                "Answer the call",
+                "Heed the summons",
+                "A mission awaits",
+                "Your quest begins",
+                "The adventure starts now",
+                "Embark on the journey",
+                "Set sail",
+                "Chart your course",
+                "Navigate wisely",
+                "Steer true",
+                "Avoid distractions",
+                "Stay focused",
+                "Focus brings results",
+                "Laser focus needed",
+                "Concentrate fully",
+                "Give it your all",
+                "Full commitment required",
+                "Half measures fail",
+                "Go all in",
+                "Total dedication",
+                "Devote yourself",
+                "Commit fully",
+                "No turning back",
+                "Point of no return",
+                "You've crossed the threshold",
+                "The die is cast",
+                "Fate is sealed",
+                "Destiny unfolds",
+                "Watch it happen",
+                "Be the witness",
+                "Observe without judgment",
+                "Detach from outcomes",
+                "Let results surprise you",
+                "Release expectations",
+                "Expect nothing, gain everything",
+                "Open hands receive more",
+                "Clinging causes loss",
+                "Hold loosely",
+                "Gentle grip",
+                "Soft strength",
+                "Quiet power",
+                "Silent confidence",
+                "Inner peace radiates",
+                "Calm is contagious",
+                "Be the calm",
+                "Center of the storm",
+                "Eye of the hurricane",
+                "Stillness within chaos",
+                "Find your quiet",
+                "Seek solitude",
+                "Alone time is valuable",
+                "Solitude brings insight",
+                "Reflect in silence",
+                "Silent contemplation",
+                "Deep thinking required",
+                "Ponder deeply",
+                "Mull it over",
+                "Let it marinate",
+                "Give it time to settle",
+                "Allow ideas to percolate",
+                "Brewing understanding",
+                "Steep in thought",
+                "Soak in wisdom",
+                "Absorb knowledge",
+                "Learn continuously",
+                "Never stop learning",
+                "Education is lifelong",
+                "Knowledge is power",
+                "Wisdom is deeper",
+                "Seek wisdom",
+                "Pursue understanding",
+                "Comprehension dawns",
+                "The light bulb moment",
+                "Epiphany strikes",
+                "Sudden clarity",
+                "Aha!",
+                "Eureka!",
+                "The penny drops",
+                "It all makes sense",
+                "The puzzle fits",
+                "Pieces come together",
+                "Cohesion emerges",
+                "Synthesis happens",
+                "Integration occurs",
+                "Wholeness achieved",
+                "Complete understanding",
+                "Full circle",
+                "Coming full circle",
+                "Cycles complete",
+                "Closure arrives",
+                "Wrapping up",
+                "The end is near",
+                "Completion approaches",
+                "Finish line in sight",
+                "Almost there",
+                "Nearly done",
+                "Final stretch",
+                "Last lap",
+                "Sprint to the finish",
+                "Finish strong",
+                "End with power",
+                "Conclude gracefully",
+                "Exit with style",
+                "Leave a legacy",
+                "Make your mark",
+                "Imprint the world",
+                "Leave something behind",
+                "Create lasting impact",
+                "Build for the future",
+                "Think long-term",
+                "Short-term sacrifice",
+                "Long-term gain",
+                "Delayed gratification",
+                "Worth the wait",
+                "Good things take time",
+                "Rome wasn't built in a day",
+                "Masterpieces require patience",
+                "Art takes time",
+                "Creation is a process",
+                "The process is beautiful",
+                "Enjoy the making",
+                "Love the crafting",
+                "Be the artisan",
+                "Craft your life",
+                "Design your days",
+                "Intentional living",
+                "Live with purpose",
+                "Purpose-driven life",
+                "Meaningful existence",
+                "A life well-lived",
+                "No regrets",
+                "Live fully",
+                "Embrace every experience",
+                "Say yes to life",
+                "Affirm existence",
+                "Celebrate being alive",
+                "Rejoice in the moment",
+                "Dance like no one's watching",
+                "Sing your heart out",
+                "Express yourself freely",
+                "Creative expression",
+                "Artistic freedom",
+                "Unleash creativity",
+                "Let ideas flow",
+                "Creative burst incoming",
+                "Inspiration strikes soon",
+                "The muse visits",
+                "Artistic awakening",
+                "Creative renaissance",
+                "A flowering of ideas",
+                "Blossom creatively",
+                "Bloom where planted",
+                "Thrive anywhere",
+                "Adapt and overcome",
+                "Resilience is key",
+                "Bounce back stronger",
+                "Rise from ashes",
+                "Phoenix rising",
+                "Rebirth awaits",
+                "Transformation complete",
+                "New you emerging",
+                "Reinvent yourself",
+                "Shed old skin",
+                "Molting season",
+                "Renewal phase",
+                "Fresh energy",
+                "Vitality returns",
+                "Energy surges",
+                "Power up",
+                "Recharge now",
+                "Take a break",
+                "Rest is productive",
+                "Restore your energy",
+                "Replenish reserves",
+                "Fill your cup",
+                "Pour from overflow",
+                "Abundant energy",
+                "Limitless vitality",
+                "Vibrant health",
+                "Wellness focus",
+                "Mind and body aligned",
+                "Holistic health",
+                "Whole-self care",
+                "Body, mind, spirit",
+                "Trinity of wellness",
+                "Balance is essential",
+                "Find equilibrium",
+                "Harmonize your life",
+                "Symmetry of soul",
+                "Alignment achieved",
+                "Chakras balanced",
+                "Energy flows freely",
+                "Blockages cleared",
+                "Open channels",
+                "Receive abundantly",
+                "Allow receiving",
+                "Worthiness affirmed",
+                "You deserve good things",
+                "Blessings flow to you",
+                "Prosperity approaches",
+                "Abundance mindset",
+                "Wealth consciousness",
+                "Financial growth soon",
+                "Money flows easily",
+                "Resources appear",
+                "Needs are met",
+                "Provision assured",
+                "You will be provided for",
+                "Security is yours",
+                "Stability incoming",
+                "Foundation solidifies",
+                "Ground beneath you",
+                "Solid footing",
+                "Steady progress",
+                "Consistent growth",
+                "Slow and steady wins",
+                "Tortoise beats hare",
+                "Consistency over speed",
+                "Regular effort",
+                "Daily discipline",
+                "Habits shape destiny",
+                "Build good habits",
+                "Routine creates results",
+                "Structure supports freedom",
+                "Discipline liberates",
+                "Order brings peace",
+                "Organize your world",
+                "Systematize success",
+                "Create systems",
+                "Automate the mundane",
+                "Free your mind",
+                "Mental space opens",
+                "Clarity of thought",
+                "Clean mental slate",
+                "Fresh perspective",
+                "New angle",
+                "Different viewpoint",
+                "Shift perspective",
+                "See it differently",
+                "Reframe the situation",
+                "Change the narrative",
+                "Tell a new story",
+                "Rewrite the script",
+                "You hold the pen",
+                "Author your destiny",
+                "Script your future",
+                "The next chapter awaits",
+                "A plot twist",
+                "Unexpected development",
+                "Surprise incoming",
+                "A delightful surprise",
+                "Something wonderful",
+                "Good news approaches",
+                "Positive developments",
+                "Things are looking up",
+                "The tide turns",
+                "Fortune reverses",
+                "Luck changes",
+                "Wheel of fortune spins",
+                "Lady Luck smiles",
+                "Fortune favors you",
+                "Blessed outcome",
+                "Fortunate result",
+                "Lucky break",
+                "Serendipity",
+                "Happy coincidence",
+                "Right place, right time",
+                "Synchronicity",
+                "Meaningful coincidence",
+                "The universe winks",
+                "A sign appears",
+                "Notice the omen",
+                "Read the signs",
+                "Symbols speak",
+                "Messages everywhere",
+                "Decode the meaning",
+                "Interpret wisely",
+                "Don't overanalyze",
+                "Sometimes simple is best",
+                "Keep it simple",
+                "Simplicity is genius",
+                "Less is more",
+                "Minimalist approach",
+                "Strip away excess",
+                "Essential only",
+                "Core truth remains",
+                "Distill to essence",
+                "Pure and simple",
+                "Uncomplicated answer",
+                "Straightforward path",
+                "Direct route",
+                "No detours",
+                "Clear road ahead",
+                "Green lights",
+                "All systems go",
+                "Launch ready",
+                "Countdown begins",
+                "Ignition",
+                "Blast off",
+                "Soar high",
+                "Reach new heights",
+                "Elevate your game",
+                "Level up",
+                "Next level unlocked",
+                "Advancement achieved",
+                "Promotion coming",
+                "Career growth",
+                "Professional success",
+                "Recognition arrives",
+                "Acknowledgment due",
+                "Credit where due",
+                "Praise incoming",
+                "Compliments await",
+                "Admiration grows",
+                "Respect earned",
+                "Reputation solidifies",
+                "Good name upheld",
+                "Integrity intact",
+                "Character shines",
+                "True colors show",
+                "Authentic self revealed",
+                "Genuine expression",
+                "Real recognizes real",
+                "Like attracts like",
+                "Kindred spirits meet",
+                "Soulmate connection",
+                "Deep bond forms",
+                "Meaningful relationship",
+                "Partnership strengthens",
+                "Union blessed",
+                "Together stronger",
+                "Team effort wins",
+                "Collaboration succeeds",
+                "Partnership works",
+                "Synergy created",
+                "One plus one equals three",
+                "Combined power",
+                "United force",
+                "Alliance forms",
+                "Coalition built",
+                "Agreement reached",
+                "Consensus achieved",
+                "Harmony restored",
+                "Conflict resolves",
+                "Peace treaty signed",
+                "War ends",
+                "Battles cease",
+                "Weapons down",
+                "Truce called",
+                "Ceasefire holds",
+                "Lasting peace",
+                "Reconciliation",
+                "Amends made",
+                "Apology accepted",
+                "Forgiveness granted",
+                "Slate wiped clean",
+                "Fresh start",
+                "Clean slate",
+                "New dawn",
+                "Sunrise of hope",
+                "Hopeful horizon",
+                "Optimistic outlook",
+                "Positive mindset",
+                "Glass half full",
+                "Abundance thinking",
+                "Scarcity vanquished",
+                "Enough for all",
+                "Plentiful resources",
+                "No lack",
+                "Full supply",
+                "Overflowing",
+                "More than enough",
+                "Surplus",
+                "Excess of good",
+                "Overwhelming blessing",
+                "Too much goodness",
+                "Cup runneth over",
+                "Spilling over",
+                "Sharing the overflow",
+                "Giving from abundance",
+                "Generosity flows",
+                "Charitable heart",
+                "Philanthropic spirit",
+                "Helping hands",
+                "Service to others",
+                "Altruism rewarded",
+                "Selfless acts honored",
+                "Good karma accrues",
+                "Spiritual credit",
+                "Heavenly account full",
+                "Divine favor",
+                "Angelic assistance",
+                "Guardian angels near",
+                "Spirit guides present",
+                "Ancestors watch over",
+                "Protected from above",
+                "Divine shield",
+                "Safe and secure",
+                "Harmed none",
+                "Protected always",
+                "In good hands",
+                "Safe passage",
+                "Smooth travels",
+                "Journey blessed",
+                "Path illuminated",
+                "Light on the road",
+                "Guiding star",
+                "Follow the light",
+                "Toward brightness",
+                "Into the light",
+                "Emerging from shadow",
+                "Darkness recedes",
+                "Light prevails",
+                "Dawn breaks",
+                "Morning comes",
+                "New day begins",
+                "Fresh opportunities",
+                "Today is the day",
+                "Carpe diem",
+                "Seize the day",
+                "Make today count",
+                "This moment matters",
+                "Now is everything",
+                "Present moment power",
+                "Here and now",
+                "Be here now",
+                "Mindfulness practiced",
+                "Awareness heightened",
+                "Consciousness expands",
+                "Awakening occurring",
+                "Spiritual awakening",
+                "Enlightenment near",
+                "Nirvana approaches",
+                "Satori moment",
+                "Sudden awakening",
+                "Gradual dawning",
+                "Slow realization",
+                "Dawning awareness",
+                "Growing understanding",
+                "Deepening wisdom",
+                "Maturing soul",
+                "Evolving spirit",
+                "Ascending",
+                "Rising higher",
+                "Upward trajectory",
+                "Positive slope",
+                "Upward trend",
+                "Improvement shown",
+                "Getting better",
+                "Progress evident",
+                "Results visible",
+                "Tangible outcomes",
+                "Measurable success",
+                "Quantifiable gains",
+                "Real achievement",
+                "Concrete results",
+                "Solid outcomes",
+                "Firm success",
+                "Established victory",
+                "Confirmed win",
+                "Validated effort",
+                "Approved",
+                "Stamped yes",
+                "Certified",
+                "Guaranteed",
+                "Assured",
+                "Certain outcome",
+                "Definite result",
+                "Inevitable success",
+                "Destined for greatness",
+                "Meant for more",
+                "Higher calling",
+                "Great purpose",
+                "Significant mission",
+                "Important work",
+                "Valuable contribution",
+                "Meaningful impact",
+                "Lasting difference",
+                "Eternal significance",
+                "Timeless value",
+                "Infinite worth",
+                "Priceless",
+                "Beyond measure",
+                "Immeasurable",
+                "Incalculable",
+                "Beyond calculation",
+                "Too vast to measure",
+                "Infinite scope",
+                "Boundless",
+                "Limitless",
+                "Endless",
+                "Eternal",
+                "Forever",
+                "Always and forever",
+                "Everlasting",
+                "Perpetual",
+                "Continuous",
+                "Unbroken",
+                "Seamless",
+                "Flawless",
+                "Perfect as is",
+                "Already perfect",
+                "Nothing to change",
+                "Acceptance is key",
+                "Radical acceptance",
+                "Total embrace",
+                "Full surrender",
+                "Letting go completely",
+                "Release control",
+                "Surrender to flow",
+                "Trust the river",
+                "Float downstream",
+                "Effortless being",
+                "Wu wei",
+                "Non-doing",
+                "Actionless action",
+                "Effortless effort",
+                "Natural unfolding",
+                "Organic growth",
+                "Natural progression",
+                "Evolution continues",
+                "Species adapt",
+                "Adaptation successful",
+                "Survival assured",
+                "Thriving confirmed",
+                "Flourishing",
+                "Blooming fully",
+                "In full bloom",
+                "Peak season",
+                "Prime time",
+                "Golden age",
+                "Renaissance period",
+                "Cultural flowering",
+                "Artistic peak",
+                "Creative zenith",
+                "Apex reached",
+                "Summit attained",
+                "Peak experience",
+                "Climax approaching",
+                "Crescendo building",
+                "Grand finale",
+                "Spectacular finish",
+                "Magnificent end",
+                "Glorious conclusion",
+                "Triumphant close",
+                "Victorious ending",
+                "Happy ending",
+                "Fairy tale finish",
+                "Storybook ending",
+                "And they lived happily",
+                "Ever after",
+                "The end... for now",
+                "To be continued",
+                "Next episode better",
+                "Sequel coming",
+                "Part two awaits",
+                "The saga continues",
+                "Never-ending story",
+                "Infinite narrative",
+                "Eternal tale",
+                "Timeless story",
+                "Your story continues",
+                "Write on",
+                "Keep writing",
+                "The pen moves",
+                "Words flow",
+                "Pages fill",
+                "Chapters accumulate",
+                "Volume grows",
+                "Library expands",
+                "Wisdom collected",
+                "Knowledge compiled",
+                "Understanding archived",
+                "Insights stored",
+                "Lessons learned",
+                "Experience gained",
+                "Maturity achieved",
+                "Growth accomplished",
+                "Evolution complete... almost",
+                "Always becoming",
+                "Never finished",
+                "Work in progress",
+                "Masterpiece in making",
+                "Art in creation",
+                "Sculpting continues",
+                "Clay still wet",
+                "Paint still fresh",
+                "Ink still drying",
+                "Not set in stone",
+                "Flexible still",
+                "Malleable",
+                "Shapeable",
+                "Formable",
+                "Pliable",
+                "Adaptable",
+                "Changeable",
+                "Mutable",
+                "Fluid",
+                "Dynamic",
+                "Ever-changing",
+                "Constant flux",
+                "Everything changes",
+                "Nothing stays same",
+                "Impermanence rules",
+                "All things pass",
+                "This changes too",
+                "Shift happens",
+                "Embrace change",
+                "Welcome transformation",
+                "Invite evolution",
+                "Become more",
+                "Expand",
+                "Grow larger",
+                "Increase capacity",
+                "Enlarge territory",
+                "Widen influence",
+                "Extend reach",
+                "Broader impact",
+                "Wider audience",
+                "More people reached",
+                "Message spreads",
+                "Word travels",
+                "News travels fast",
+                "Good news shared",
+                "Joy multiplied",
+                "Happiness shared",
+                "Doubled joy",
+                "Halved sorrow",
+                "Burden lightened",
+                "Load shared",
+                "Weight lifted",
+                "Shoulders relieved",
+                "Heavy load removed",
+                "Lightness returns",
+                "Buoyancy restored",
+                "Floating again",
+                "Light as air",
+                "Weightless",
+                "Free",
+                "Unburdened",
+                "Unshackled",
+                "Chains broken",
+                "Prison doors open",
+                "Jailbreak",
+                "Escape successful",
+                "Freedom achieved",
+                "Liberty won",
+                "Independence declared",
+                "Self-sovereign",
+                "Autonomous",
+                "Self-governing",
+                "Master of self",
+                "Self-mastery",
+                "Discipline mastered",
+                "Impulses controlled",
+                "Desires managed",
+                "Appetites balanced",
+                "Moderation achieved",
+                "Temperance practiced",
+                "Balance maintained",
+                "Middle path walked",
+                "Buddha's way",
+                "The middle way",
+                "Neither extreme",
+                "Centered position",
+                "Moderate stance",
+                "Reasonable approach",
+                "Sensible choice",
+                "Logical decision",
+                "Rational thought",
+                "Clear reasoning",
+                "Sound judgment",
+                "Good decision",
+                "Wise choice",
+                "Smart move",
+                "Intelligent action",
+                "Bright idea",
+                "Brilliant plan",
+                "Genius solution",
+                "Clever answer",
+                "Astute observation",
+                "Keen insight",
+                "Sharp perception",
+                "Acute awareness",
+                "Heightened sense",
+                "Sixth sense active",
+                "Intuition speaks",
+                "Gut feeling correct",
+                "Instincts right",
+                "Inner compass true",
+                "North star found",
+                "Direction clear",
+                "Path obvious",
+                "Route visible",
+                "Map unfolded",
+                "Treasure map revealed",
+                "X marks the spot",
+                "Dig here",
+                "Treasure below",
+                "Buried riches",
+                "Hidden wealth",
+                "Undiscovered gold",
+                "Untapped potential",
+                "Dormant talent",
+                "Sleeping giant",
+                "Awaken the giant",
+                "Stir the sleeping",
+                "Rouse the dormant",
+                "Activate potential",
+                "Switch on",
+                "Power up now",
+                "Full power",
+                "Maximum output",
+                "Peak performance",
+                "Optimal state",
+                "Flow state",
+                "In the zone",
+                "Locked in",
+                "Dialed in",
+                "Tuned perfectly",
+                "Calibrated",
+                "Aligned",
+                "Synced",
+                "Harmonized",
+                "Attuned",
+                "Resonating",
+                "Vibrating high",
+                "High frequency",
+                "Elevated state",
+                "Raised vibration",
+                "Spiritual high",
+                "Divine connection",
+                "God consciousness",
+                "Universal mind",
+                "Cosmic awareness",
+                "One with all",
+                "Unity consciousness",
+                "Non-duality",
+                "Oneness",
+                "All is one",
+                "Separation illusion",
+                "We are connected",
+                "Interconnected web",
+                "Indra's net",
+                "Infinite reflections",
+                "Mirrors everywhere",
+                "Reflections of you",
+                "You in everything",
+                "Everything in you",
+                "Microcosm, macrocosm",
+                "As above, so below",
+                "Hermetic truth",
+                "Ancient wisdom",
+                "Eternal knowledge",
+                "Perennial philosophy",
+                "Timeless teaching",
+                "Ageless truth",
+                "Eternal verity",
+                "Fundamental reality",
+                "Ground of being",
+                "Source of all",
+                "Origin point",
+                "Alpha and omega",
+                "Beginning and end",
+                "First and last",
+                "The all in all",
+                "Everything and nothing",
+                "The void",
+                "The fullness",
+                "Emptiness is form",
+                "Form is emptiness",
+                "Heart sutra wisdom",
+                "Prajnaparamita",
+                "Transcendental wisdom",
+                "Beyond knowledge",
+                "Beyond understanding",
+                "Ineffable",
+                "Indescribable",
+                "Beyond words",
+                "Wordless truth",
+                "Silent knowing",
+                "Tacit understanding",
+                "Unspoken agreement",
+                "Telepathic connection",
+                "Mind reading possible",
+                "Thoughts aligned",
+                "Mental sync",
+                "Brain waves match",
+                "Same wavelength",
+                "On same page",
+                "Literally this page",
+                "Right here, right now",
+                "This is it",
+                "The moment",
+                "The answer",
+                "Your answer",
+            ];
+
+            // ─────────────────────────────────────
+            // DOM ELEMENTS
+            // ─────────────────────────────────────
+            const bookScene = document.getElementById('bookScene');
+            const book = document.getElementById('book');
+            const frontCover = document.getElementById('frontCover');
+            const flippingPage = document.getElementById('flippingPage');
+            const pageContent = document.getElementById('pageContent');
+            const pageNumber = document.getElementById('pageNumber');
+            const answerDisplay = document.getElementById('answerDisplay');
+            const answerReveal = document.getElementById('answerReveal');
+            const questionInput = document.getElementById('questionInput');
+            const btnAnswer = document.getElementById('btnAnswer');
+            const toast = document.getElementById('toast');
+            const pageStack = document.getElementById('pageStack');
+            const pageStackLeft = document.getElementById('pageStackLeft');
+
+            // ─────────────────────────────────────
+            // STATE
+            // ─────────────────────────────────────
+            let lastAnswerIndex = -1;
+            let isAnimating = false;
+            let bookOpen = false;
+            let currentFlippedPages = 0;
+            let animationTimeoutIds = [];
+
+            // ─────────────────────────────────────
+            // FUNCTIONS
+            // ─────────────────────────────────────
+            function getRandomAnswerIndex() {
+                let idx;
+                do {
+                    idx = Math.floor(Math.random() * answers.length);
+                } while (idx === lastAnswerIndex && answers.length > 1);
+                lastAnswerIndex = idx;
+                return idx;
+            }
+
+            function showToast(msg) {
+                toast.textContent = msg;
+                toast.classList.add('show');
+                clearTimeout(toast._timeout);
+                toast._timeout = setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2200);
+            }
+
+            function resetBookState() {
+                // Clear any pending timeouts
+                animationTimeoutIds.forEach(id => clearTimeout(id));
+                animationTimeoutIds = [];
+                isAnimating = false;
+                bookOpen = false;
+                currentFlippedPages = 0;
+
+                // Reset classes
+                book.classList.remove('open');
+                frontCover.classList.remove('open');
+                flippingPage.classList.remove('flipped', 'slow-flip', 'very-slow-flip', 'show-answer');
+                answerDisplay.classList.remove('visible');
+                answerReveal.classList.remove('visible');
+                pageContent.textContent = '';
+                pageNumber.textContent = '';
+                answerDisplay.textContent = '';
+                answerReveal.textContent = '';
+                flippingPage.style.display = 'block';
+                flippingPage.style.transform = 'rotateY(0deg)';
+                flippingPage.style.zIndex = '25';
+                pageContent.style.opacity = '0';
+
+                // Reset page stacks visibility
+                pageStack.style.opacity = '1';
+                pageStackLeft.style.opacity = '0.7';
+            }
+
+            function animateBookOpening(targetAnswerIndex, callback) {
+                const totalFlips = 18 + Math.floor(Math.random() * 12); // 18-29 flips
+                let flipCount = 0;
+                const targetFlip = totalFlips;
+                const answerText = answers[targetAnswerIndex];
+
+                // Open the front cover
+                frontCover.classList.add('open');
+                book.classList.add('open');
+
+                // After cover starts opening, begin page flips
+                const coverOpenDelay = 400;
+
+                animationTimeoutIds.push(setTimeout(() => {
+                    flippingPage.style.display = 'block';
+                    flippingPage.style.transform = 'rotateY(0deg)';
+                    flippingPage.style.zIndex = '25';
+                    flippingPage.classList.remove('flipped', 'slow-flip', 'very-slow-flip',
+                        'show-answer');
+                    pageContent.style.opacity = '0';
+                    pageContent.textContent = '';
+                    pageNumber.textContent = '';
+
+                    // Update left stack to show accumulated pages
+                    updatePageStacks(0);
+
+                    performFlip(0, totalFlips, answerText, callback);
+                }, coverOpenDelay));
+            }
+
+            function performFlip(currentFlip, totalFlips, answerText, callback) {
+                if (currentFlip >= totalFlips) {
+                    // Final flip - show answer
+                    finishAnimation(answerText, callback);
+                    return;
+                }
+
+                const remainingFlips = totalFlips - currentFlip;
+                const progress = currentFlip / totalFlips;
+
+                // Calculate delay for this flip
+                let delay;
+                if (progress < 0.5) {
+                    // Fast riffling: 50-80ms
+                    delay = 50 + Math.random() * 30;
+                } else if (progress < 0.75) {
+                    // Slowing down: 80-180ms
+                    delay = 80 + (progress - 0.5) * 400;
+                } else if (progress < 0.9) {
+                    // Slower: 180-350ms
+                    delay = 180 + (progress - 0.75) * 680;
+                } else {
+                    // Very slow final flips: 350-600ms
+                    delay = 350 + (progress - 0.9) * 2500;
+                }
+
+                // Add slight randomness
+                delay *= (0.85 + Math.random() * 0.3);
+
+                animationTimeoutIds.push(setTimeout(() => {
+                    // Reset the flipping page to right side
+                    flippingPage.classList.remove('flipped', 'slow-flip', 'very-slow-flip',
+                        'show-answer');
+                    flippingPage.style.transform = 'rotateY(0deg)';
+                    flippingPage.style.zIndex = '25';
+                    pageContent.style.opacity = '0';
+
+                    // Show random snippet during riffling
+                    if (remainingFlips > 3) {
+                        const snippetIdx = Math.floor(Math.random() * answers.length);
+                        pageContent.textContent = answers[snippetIdx].length > 50 ?
+                            answers[snippetIdx].substring(0, 45) + '...' :
+                            answers[snippetIdx];
+                        pageNumber.textContent = Math.floor(Math.random() * 700) + 1;
+                    } else if (remainingFlips > 1) {
+                        pageContent.textContent = '...';
+                        pageNumber.textContent = '';
+                    } else {
+                        pageContent.textContent = '';
+                        pageNumber.textContent = '';
+                    }
+
+                    // Small delay to let the page settle on the right
+                    animationTimeoutIds.push(setTimeout(() => {
+                        // Determine flip speed class
+                        let speedClass = '';
+                        if (remainingFlips <= 2) {
+                            speedClass = 'very-slow-flip';
+                        } else if (remainingFlips <= 5) {
+                            speedClass = 'slow-flip';
+                        }
+
+                        // Execute the flip
+                        if (speedClass) {
+                            flippingPage.classList.add(speedClass);
+                        }
+                        flippingPage.classList.add('flipped');
+                        flippingPage.style.transform = 'rotateY(-175deg)';
+
+                        // Update page stacks to show riffling progress
+                        updatePageStacks(currentFlip + 1);
+
+                        // After flip completes, move to next
+                        const flipDuration = remainingFlips <= 2 ? 600 :
+                            remainingFlips <= 5 ? 350 : 150;
+
+                        animationTimeoutIds.push(setTimeout(() => {
+                            // Move flipped page to left side conceptually
+                            flippingPage.style.zIndex = '3';
+                            currentFlippedPages++;
+
+                            // Continue to next flip
+                            performFlip(currentFlip + 1, totalFlips,
+                                answerText, callback);
+                        }, flipDuration));
+                    }, 20));
+                }, delay));
+            }
+
+            function updatePageStacks(flippedCount) {
+                // As pages flip, the right stack thins and left stack grows
+                const rightOpacity = Math.max(0.3, 1 - (flippedCount / 25));
+                const leftOpacity = Math.min(0.9, 0.3 + (flippedCount / 25));
+                pageStack.style.opacity = rightOpacity;
+                pageStackLeft.style.opacity = leftOpacity;
+            }
+
+            function finishAnimation(answerText, callback) {
+                // Show answer on the flipping page
+                flippingPage.classList.remove('flipped', 'slow-flip', 'very-slow-flip');
+                flippingPage.style.transform = 'rotateY(0deg)';
+                flippingPage.style.zIndex = '25';
+                flippingPage.classList.add('show-answer');
+                pageContent.textContent = answerText;
+                pageContent.style.opacity = '1';
+                pageNumber.textContent = '';
+
+                // Also show on left spread
+                answerDisplay.textContent = answerText;
+                answerDisplay.classList.add('visible');
+
+                // Show below book
+                answerReveal.textContent = '✦ ' + answerText + ' ✦';
+                answerReveal.classList.add('visible');
+
+                // Update stacks
+                pageStack.style.opacity = '0.3';
+                pageStackLeft.style.opacity = '0.9';
+                updatePageStacks(25);
+
+                // Book is now open
+                bookOpen = true;
+                isAnimating = false;
+                btnAnswer.disabled = false;
+                btnAnswer.textContent = '✧ Reveal Answer ✧';
+
+                if (callback) callback();
+            }
+
+            function closeBook(callback) {
+                // Close the cover and reset
+                frontCover.classList.remove('open');
+                book.classList.remove('open');
+                flippingPage.classList.remove('flipped', 'slow-flip', 'very-slow-flip',
+                'show-answer');
+                flippingPage.style.transform = 'rotateY(0deg)';
+                flippingPage.style.zIndex = '25';
+                flippingPage.style.display = 'block';
+                pageContent.style.opacity = '0';
+                pageContent.textContent = '';
+                pageNumber.textContent = '';
+                answerDisplay.classList.remove('visible');
+                answerDisplay.textContent = '';
+                answerReveal.classList.remove('visible');
+                answerReveal.textContent = '';
+                pageStack.style.opacity = '1';
+                pageStackLeft.style.opacity = '0.7';
+                bookOpen = false;
+                currentFlippedPages = 0;
+                updatePageStacks(0);
+
+                setTimeout(() => {
+                    if (callback) callback();
+                }, 500);
+            }
+
+            function handleAnswerRequest() {
+                if (isAnimating) return;
+
+                const question = questionInput.value.trim();
+                if (!question) {
+                    showToast('Please ask a question first...');
+                    questionInput.focus();
+                    // Shake the input
+                    questionInput.style.animation = 'none';
+                    questionInput.offsetHeight; // trigger reflow
+                    questionInput.style.animation = 'shake 0.5s ease';
+                    return;
+                }
+
+                isAnimating = true;
+                btnAnswer.disabled = true;
+                btnAnswer.textContent = '⏳ Opening...';
+
+                // Clear previous answer
+                answerDisplay.classList.remove('visible');
+                answerReveal.classList.remove('visible');
+                answerDisplay.textContent = '';
+                answerReveal.textContent = '';
+
+                const targetIndex = getRandomAnswerIndex();
+
+                if (bookOpen) {
+                    // Close book first, then reopen
+                    closeBook(() => {
+                        resetBookState();
+                        // Small delay before reopening
+                        setTimeout(() => {
+                            animateBookOpening(targetIndex, () => {
+                                // Animation complete
+                            });
+                        }, 300);
+                    });
+                } else {
+                    // Book is closed, open it
+                    resetBookState();
+                    animateBookOpening(targetIndex, () => {
+                        // Animation complete
+                    });
+                }
+            }
+
+            // ─────────────────────────────────────
+            // EVENT LISTENERS
+            // ─────────────────────────────────────
+            btnAnswer.addEventListener('click', handleAnswerRequest);
+
+            questionInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    handleAnswerRequest();
+                }
+            });
+
+            // Click on front cover to close the book (when open and not animating)
+            frontCover.addEventListener('click', () => {
+                if (bookOpen && !isAnimating) {
+                    isAnimating = true;
+                    btnAnswer.disabled = true;
+                    btnAnswer.textContent = '⏳ Closing...';
+                    closeBook(() => {
+                        resetBookState();
+                        isAnimating = false;
+                        btnAnswer.disabled = false;
+                        btnAnswer.textContent = '✧ Reveal Answer ✧';
+                    });
+                }
+            });
+
+            // Add shake animation keyframes dynamically
+            const shakeStyle = document.createElement('style');
+            shakeStyle.textContent = `
+                @keyframes shake {
+                    0%,100% { transform: translateX(0); }
+                    10%,50%,90% { transform: translateX(-6px); }
+                    30%,70% { transform: translateX(6px); }
+                    20%,40%,60%,80% { transform: translateX(-4px); }
+                }
+            `;
+            document.head.appendChild(shakeStyle);
+
+            // ─────────────────────────────────────
+            // INITIAL SETUP
+            // ─────────────────────────────────────
+            resetBookState();
+            flippingPage.style.display = 'block';
+            flippingPage.style.transform = 'rotateY(0deg)';
+            pageContent.style.opacity = '0';
+            pageContent.textContent = '';
+            pageNumber.textContent = '';
+            updatePageStacks(0);
+
+            // Focus input on load
+            setTimeout(() => {
+                questionInput.focus();
+            }, 600);
+
+            console.log('📖 Book of ANSWERS ready.');
+            console.log('   ' + answers.length + ' answers loaded.');
+            console.log('   Ask your question and open the book...');
+        })();
+    </script>
+</body>
+</html>
