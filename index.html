@@ -23,13 +23,13 @@
             --page-shadow: #c4b896;
             --spine-dark: #2a1508;
             --red-accent: #8b1a1a;
-            /* Book dimensions – wider and a little shorter */
-            --book-width: 500px;
-            --book-height: 480px;
-            --book-width-mobile: 360px;
-            --book-height-mobile: 340px;
-            --book-width-tablet: 420px;
-            --book-height-tablet: 420px;
+            /* Book dimensions – wider and shorter */
+            --book-width: 650px;
+            --book-height: 380px;
+            --book-width-mobile: 380px;
+            --book-height-mobile: 240px;
+            --book-width-tablet: 520px;
+            --book-height-tablet: 300px;
         }
 
         * {
@@ -154,7 +154,7 @@
             flex-direction: column;
             align-items: center;
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
             gap: 20px;
         }
 
@@ -526,11 +526,11 @@
         .flipping-page .page-content {
             font-family: 'Cormorant Garamond', 'Georgia', serif;
             font-size: clamp(16px, 2vw, 20px);
-            color: #3a2a15;
+            color: #000000;
             text-align: center;
             padding: 15px;
             font-style: italic;
-            font-weight: 600;
+            font-weight: bold;
             line-height: 1.5;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -563,13 +563,17 @@
             pointer-events: none;
             font-family: 'Cormorant Garamond', 'Georgia', serif;
             font-size: clamp(13px, 1.6vw, 17px);
-            color: #3a2a15;
+            color: #000000;
             text-align: center;
+            font-weight: bold;
             font-style: italic;
             line-height: 1.5;
             opacity: 0;
             transition: opacity 0.5s ease 0.3s;
             padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .answer-display.visible {
             opacity: 1;
@@ -804,7 +808,6 @@
 </head>
 <body>
 
-    <!-- Floating particles -->
     <div class="particles-container">
         <div class="particle" style="width:3px;height:3px;"></div>
         <div class="particle" style="width:2px;height:2px;"></div>
@@ -818,22 +821,17 @@
         <div class="particle" style="width:3px;height:3px;"></div>
     </div>
 
-    <!-- Main container -->
     <div class="main-container">
-        <!-- Header -->
         <div class="header">
             <h1>Book Of ANSWERS</h1>
             <p class="subtitle">Ask, and the pages shall reveal...</p>
         </div>
 
-        <!-- Book Area -->
         <div class="book-area">
             <div class="book-scene" id="bookScene">
                 <div class="book" id="book">
-                    <!-- Back cover -->
                     <div class="back-cover"></div>
 
-                    <!-- Left page stack -->
                     <div class="page-stack-left" id="pageStackLeft">
                         <div class="page-layer-left"></div>
                         <div class="page-layer-left"></div>
@@ -841,7 +839,6 @@
                         <div class="page-layer-left"></div>
                     </div>
 
-                    <!-- Right page stack -->
                     <div class="page-stack" id="pageStack">
                         <div class="page-layer"></div>
                         <div class="page-layer"></div>
@@ -853,29 +850,24 @@
                         <div class="page-layer"></div>
                     </div>
 
-                    <!-- Spine -->
                     <div class="book-spine"></div>
 
-                    <!-- Front cover -->
                     <div class="front-cover" id="frontCover">
                         <div class="cover-ornament">
                             <span class="cover-title">BOOK OF<br>ANSWERS</span>
                         </div>
                     </div>
 
-                    <!-- Flipping page (animated) -->
                     <div class="flipping-page" id="flippingPage">
                         <span class="page-content" id="pageContent"></span>
                         <span class="page-number" id="pageNumber"></span>
                     </div>
 
-                    <!-- Answer on left spread -->
                     <div class="answer-display" id="answerDisplay"></div>
                 </div>
             </div>
         </div>
 
-        <!-- Input Area -->
         <div class="input-area">
             <label class="question-label" for="questionInput">✦ &nbsp;What is your question?&nbsp; ✦</label>
             <input
@@ -891,11 +883,9 @@
             </button>
         </div>
 
-        <!-- Answer reveal text -->
         <div class="answer-reveal" id="answerReveal"></div>
     </div>
 
-    <!-- Toast -->
     <div class="toast" id="toast">Please ask a question first</div>
 
     <script>
@@ -2448,4 +2438,4 @@
         })();
     </script>
 </body>
-    </html>
+</html>
